@@ -8,5 +8,3 @@ export const rootReducer = combineReducers({
   favoriteContacts: favoriteContactsReducer,
   groupContacts: groupContactsReducer,
 })
-
-export type RootState = ReturnType<typeof rootReducer>
