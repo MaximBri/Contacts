@@ -1,5 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
-import { CommonPageProps } from './types'
+import { memo } from 'react'
 import { Col, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
 import { ContactDto } from 'src/types/dto/ContactDto'
@@ -11,7 +10,7 @@ import { useAppSelector } from 'src/store'
 
 export const GroupPage = memo(() => {
   const { groupId } = useParams<{ groupId: string }>()
-  
+
   const contactsList = useAppSelector((state) => state.contacts)
   const groupContactsList = useAppSelector((state) => state.groupContacts)
 
