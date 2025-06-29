@@ -1,21 +1,23 @@
-import React, {FC, useEffect, useState} from 'react';
-import {CommonPageProps} from './types';
-import {Col, Row} from 'react-bootstrap';
-import {useParams} from 'react-router-dom';
-import {ContactDto} from 'src/types/dto/ContactDto';
-import {ContactCard} from 'src/components/ContactCard';
-import {Empty} from 'src/components/Empty';
+import { Col, Row } from 'react-bootstrap'
+import { useNavigate, useParams } from 'react-router-dom'
+import { ContactDto } from 'src/types/dto/ContactDto'
+import { ContactCard } from 'src/components/ContactCard'
+import { Empty } from 'src/components/Empty'
+import { useAppSelector } from 'src/store'
 
+export const ContactPage = () => {
+  const navigate = useNavigate()
+  const { contactId } = useParams<{ contactId: string }>()
+  const contactsList = useAppSelector((state) => state.contacts)
 
-export const ContactPage: FC<CommonPageProps> = ({
-  contactsState
-}) => {
-  const {contactId} = useParams<{ contactId: string }>();
-  const [contact, setContact] = useState<ContactDto>();
+  const contact: ContactDto | undefined = contactsList.find(
+    ({ id }) => id === contactId
+  )
 
-  useEffect(() => {
-    setContact(() => contactsState[0].find(({id}) => id === contactId));
-  }, [contactId]);
+  if (!contact) {
+    navigate('/')
+    return null
+  }
 
   return (
     <Row xxl={3}>
@@ -23,5 +25,5 @@ export const ContactPage: FC<CommonPageProps> = ({
         {contact ? <ContactCard contact={contact} /> : <Empty />}
       </Col>
     </Row>
-  );
-};
+  )
+}
