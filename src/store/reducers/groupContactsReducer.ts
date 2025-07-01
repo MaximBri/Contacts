@@ -1,11 +1,11 @@
 import { GroupContactsDto } from 'src/types/dto/GroupContactsDto'
 import { GroupContactsActionTypes } from '../actions/groupContactsActions'
 import {
-  SET_GROUP_CONTACTS,
   ADD_GROUP_CONTACT,
-  UPDATE_GROUP_CONTACT,
   DELETE_GROUP_CONTACT,
-} from '../actions/actionTypes'
+  SET_GROUP_CONTACTS,
+  UPDATE_GROUP_CONTACT,
+} from '../actions-types'
 
 const initialState: GroupContactsDto[] = []
 

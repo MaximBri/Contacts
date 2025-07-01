@@ -1,11 +1,11 @@
 import { ContactDto } from 'src/types/dto/ContactDto'
 import { ContactsActionTypes } from '../actions/contactsActions'
 import {
-  SET_CONTACTS,
   ADD_CONTACT,
-  UPDATE_CONTACT,
   DELETE_CONTACT,
-} from '../actions/actionTypes'
+  SET_CONTACTS,
+  UPDATE_CONTACT,
+} from '../actions-types'
 
 const initialState: ContactDto[] = []
 

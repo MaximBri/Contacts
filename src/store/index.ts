@@ -23,4 +23,4 @@ export type RootState = ReturnType<typeof rootReducer>
 
 export * from './actions'
 export * from './types'
-export * from './hooks'
+export * from '../hooks/hooks'

@@ -4,7 +4,7 @@ import {
   ADD_GROUP_CONTACT,
   UPDATE_GROUP_CONTACT,
   DELETE_GROUP_CONTACT,
-} from './actionTypes'
+} from '../actions-types'
 
 export interface SetGroupContactsAction {
   type: typeof SET_GROUP_CONTACTS

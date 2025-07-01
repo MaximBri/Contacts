@@ -3,7 +3,7 @@ import {
   SET_FAVORITE_CONTACTS,
   ADD_FAVORITE_CONTACT,
   REMOVE_FAVORITE_CONTACT,
-} from './actionTypes'
+} from '../actions-types'
 
 export interface SetFavoriteContactsAction {
   type: typeof SET_FAVORITE_CONTACTS

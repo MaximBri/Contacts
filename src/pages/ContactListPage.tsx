@@ -11,19 +11,19 @@ export const ContactListPage = memo(() => {
 
   const [contacts, setContacts] = useState<ContactDto[]>(contactsList)
 
-  const onSubmit = (fv: Partial<FilterFormValues>) => {
+  const onSubmit = (contact: Partial<FilterFormValues>) => {
     let findContacts: ContactDto[] = contactsList
 
-    if (fv.name) {
-      const fvName = fv.name.toLowerCase()
+    if (contact.name) {
+      const contactName = contact.name.toLowerCase()
       findContacts = findContacts.filter(
-        ({ name }) => name.toLowerCase().indexOf(fvName) > -1
+        ({ name }) => name.toLowerCase().indexOf(contactName) > -1
       )
     }
 
-    if (fv.groupId) {
+    if (contact.groupId) {
       const groupContacts = groupContactsList.find(
-        ({ id }) => id === fv.groupId
+        ({ id }) => id === contact.groupId
       )
 
       if (groupContacts) {

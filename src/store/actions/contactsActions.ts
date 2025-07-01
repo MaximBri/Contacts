@@ -1,10 +1,5 @@
 import { ContactDto } from 'src/types/dto/ContactDto'
-import {
-  SET_CONTACTS,
-  ADD_CONTACT,
-  UPDATE_CONTACT,
-  DELETE_CONTACT,
-} from './actionTypes'
+import { ADD_CONTACT, DELETE_CONTACT, SET_CONTACTS, UPDATE_CONTACT } from '../actions-types'
 
 export interface SetContactsAction {
   type: typeof SET_CONTACTS

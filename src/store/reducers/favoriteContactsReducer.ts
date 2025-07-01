@@ -1,10 +1,10 @@
 import { FavoriteContactsDto } from 'src/types/dto/FavoriteContactsDto'
 import { FavoriteContactsActionTypes } from '../actions/favoriteContactsActions'
 import {
-  SET_FAVORITE_CONTACTS,
   ADD_FAVORITE_CONTACT,
   REMOVE_FAVORITE_CONTACT,
-} from '../actions/actionTypes'
+  SET_FAVORITE_CONTACTS,
+} from '../actions-types'
 
 const initialState: FavoriteContactsDto = []
 
