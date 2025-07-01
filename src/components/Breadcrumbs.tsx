@@ -1,24 +1,26 @@
-import React, {memo} from 'react';
-import {Col, ListGroup, Row} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
+import { memo } from 'react'
+import { Col, ListGroup, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { routes } from 'src/apps/MainApp/routes/routes'
 
 interface BreadcrumbsProps {
   pathNames: string[]
 }
 
-export const Breadcrumbs = memo<BreadcrumbsProps>(({
-  pathNames
-}) => {
+export const Breadcrumbs = memo<BreadcrumbsProps>(({ pathNames }) => {
   return (
     <Row>
       <Col className={'mb-4'}>
         <ListGroup horizontal>
-          <ListGroup.Item> <Link to={'/'}>Home</Link> </ListGroup.Item>
+          <ListGroup.Item>
+            {' '}
+            <Link to={routes.home}>Home</Link>{' '}
+          </ListGroup.Item>
           {pathNames.map((name, index) => {
-            const routeTo = `/${pathNames.slice(0, index + 1).join('/')}`;
+            const routeTo = `/${pathNames.slice(0, index + 1).join('/')}`
 
             // Определяем, является ли текущий элемент последним в списке
-            const isLast = index === pathNames.length - 1;
+            const isLast = index === pathNames.length - 1
 
             return (
               <ListGroup.Item key={routeTo}>
@@ -30,10 +32,10 @@ export const Breadcrumbs = memo<BreadcrumbsProps>(({
                   </Link>
                 )}
               </ListGroup.Item>
-            );
+            )
           })}
         </ListGroup>
       </Col>
     </Row>
   )
-});
+})

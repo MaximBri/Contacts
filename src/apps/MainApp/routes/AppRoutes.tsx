@@ -4,22 +4,28 @@ import { routes } from './routes'
 import { lazy, Suspense } from 'react'
 
 const ContactListPage = lazy(() =>
-  import('src/pages/ContactListPage').then((m) => ({
-    default: m.ContactListPage,
+  import('src/pages/ContactListPage').then((modules) => ({
+    default: modules.ContactListPage,
   }))
 )
 const ContactPage = lazy(() =>
-  import('src/pages/ContactPage').then((m) => ({ default: m.ContactPage }))
+  import('src/pages/ContactPage').then((modules) => ({
+    default: modules.ContactPage,
+  }))
 )
 const GroupListPage = lazy(() =>
-  import('src/pages/GroupListPage').then((m) => ({ default: m.GroupListPage }))
+  import('src/pages/GroupListPage').then((modules) => ({
+    default: modules.GroupListPage,
+  }))
 )
 const GroupPage = lazy(() =>
-  import('src/pages/GroupPage').then((m) => ({ default: m.GroupPage }))
+  import('src/pages/GroupPage').then((modules) => ({
+    default: modules.GroupPage,
+  }))
 )
 const FavoritListPage = lazy(() =>
-  import('src/pages/FavoritListPage').then((m) => ({
-    default: m.FavoritListPage,
+  import('src/pages/FavoritListPage').then((modules) => ({
+    default: modules.FavoritListPage,
   }))
 )
 

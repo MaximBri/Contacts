@@ -4,6 +4,7 @@ import { ContactDto } from 'src/types/dto/ContactDto'
 import { ContactCard } from 'src/components/ContactCard'
 import { Empty } from 'src/components/Empty'
 import { useAppSelector } from 'src/store'
+import { routes } from 'src/apps/MainApp/routes/routes'
 
 export const ContactPage = () => {
   const navigate = useNavigate()
@@ -15,7 +16,7 @@ export const ContactPage = () => {
   )
 
   if (!contact) {
-    navigate('/')
+    navigate(routes.home)
     return null
   }
 
