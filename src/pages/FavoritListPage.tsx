@@ -1,16 +1,15 @@
-import { memo } from 'react'
+import { observer } from 'mobx-react-lite'
 import { Col, Row } from 'react-bootstrap'
 
-import { useGetContactsQuery } from 'src/store/contacts'
-import { useAppSelector } from 'src/store'
 import { ContactCard } from 'src/components/ContactCard'
+import { useGetContacts } from 'src/hooks/useGetContacts'
+import { favoritesStore } from 'src/store'
 import { ContactDto } from 'src/types/dto/ContactDto'
 
-export const FavoritListPage = memo(() => {
-  const { data: contactsList } = useGetContactsQuery()
-  const favoriteContactsList = useAppSelector(
-    (state) => state.favoriteSlice.data
-  )
+export const FavoritListPage = observer(() => {
+  const contactsList = useGetContacts()
+
+  const favoriteContactsList = favoritesStore.favoriteContacts
 
   const contacts: ContactDto[] =
     contactsList?.filter(({ id }: { id: any }) =>

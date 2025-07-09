@@ -1,21 +1,18 @@
-import { Col, Row } from 'react-bootstrap'
 import { useNavigate, useParams } from 'react-router-dom'
+import { Col, Row } from 'react-bootstrap'
+import { observer } from 'mobx-react-lite'
 
-import { useGetContactsQuery } from 'src/store/contacts'
+import { useGetContacts } from 'src/hooks/useGetContacts'
 import { ContactCard } from 'src/components/ContactCard'
-import { ContactDto } from 'src/types/dto/ContactDto'
 import { routes } from 'src/apps/MainApp/routes/routes'
 import { Empty } from 'src/components/Empty'
 
-export const ContactPage = () => {
+export const ContactPage = observer(() => {
   const navigate = useNavigate()
   const { contactId } = useParams<{ contactId: string }>()
 
-  const { data: contactsList } = useGetContactsQuery()
-
-  const contact: ContactDto | undefined = contactsList?.find(
-    ({ id }) => id === contactId
-  )
+  const contactsList = useGetContacts()
+  const contact = contactsList?.find(({ id }) => id === contactId)
 
   if (!contact) {
     navigate(routes.home)
@@ -29,4 +26,4 @@ export const ContactPage = () => {
       </Col>
     </Row>
   )
-}
+})

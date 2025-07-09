@@ -1,11 +1,11 @@
-import { memo } from 'react'
+import { observer } from 'mobx-react-lite'
 import { Col, Row } from 'react-bootstrap'
 
 import { GroupContactsCard } from 'src/components/GroupContactsCard'
-import { useGetGroupsQuery } from 'src/store/groups'
+import { useGetGroups } from 'src/hooks/useGetGroups'
 
-export const GroupListPage = memo(() => {
-  const { data: groupContactsList } = useGetGroupsQuery()
+export const GroupListPage = observer(() => {
+  const groupContactsList = useGetGroups()
 
   return (
     <Row xxl={4}>
