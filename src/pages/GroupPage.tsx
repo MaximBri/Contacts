@@ -1,26 +1,22 @@
-import { memo } from 'react'
-import { Col, Row } from 'react-bootstrap'
 import { useParams } from 'react-router-dom'
+import { Col, Row } from 'react-bootstrap'
+import { observer } from 'mobx-react-lite'
 
-import { useGetContactsQuery } from 'src/store/contacts'
-import { useGetGroupsQuery } from 'src/store/groups'
 import { GroupContactsCard } from 'src/components/GroupContactsCard'
-import { GroupContactsDto } from 'src/types/dto/GroupContactsDto'
+import { useGetContacts } from 'src/hooks/useGetContacts'
+import { useGetGroups } from 'src/hooks/useGetGroups'
 import { ContactCard } from 'src/components/ContactCard'
-import { ContactDto } from 'src/types/dto/ContactDto'
 import { Empty } from 'src/components/Empty'
 
-export const GroupPage = memo(() => {
+export const GroupPage = observer(() => {
   const { groupId } = useParams<{ groupId: string }>()
 
-  const { data: contactsList } = useGetContactsQuery()
-  const { data: groupContactsList } = useGetGroupsQuery()
+  const contactsList = useGetContacts()
+  const groupContactsList = useGetGroups()
 
   const findGroup = groupContactsList?.find(({ id }) => id === groupId)
-  const groupContacts: GroupContactsDto | undefined = groupContactsList?.find(
-    ({ id }) => id === groupId
-  )
-  const contacts: ContactDto[] = findGroup
+  const groupContacts = groupContactsList?.find(({ id }) => id === groupId)
+  const contacts = findGroup
     ? contactsList?.filter(({ id }) => findGroup.contactIds.includes(id)) || []
     : []
 
